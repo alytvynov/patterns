@@ -1,0 +1,20 @@
+{
+    "name": "alytvynov/patterns",
+    "description": "Education Design Patterns",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anton Lytvynov",
+            "email": "lytvynov.anton@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.3"
+    }
+}
