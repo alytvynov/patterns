@@ -1,19 +1,21 @@
 <?php
 
-use App\AbstractFactory\FactoryClient;
-use App\AbstractFactory\ModernFactory;
-use App\AbstractFactory\VictorianFactory;
-use App\Builder\BuilderA;
-use App\Builder\BuilderB;
-use App\Builder\Director;
-use App\FactoryMethod\LogisticsApp;
-use App\FactoryMethod\RoadLogistics;
-use App\FactoryMethod\ShipLogistics;
-use App\Prototype\Circle;
-use App\Prototype\Rectangle;
-use App\Singleton\Database;
+use App\Creational\AbstractFactory\FactoryClient;
+use App\Creational\AbstractFactory\ModernFactory;
+use App\Creational\AbstractFactory\VictorianFactory;
+use App\Creational\Builder\BuilderA;
+use App\Creational\Builder\BuilderB;
+use App\Creational\Builder\Director;
+use App\Creational\FactoryMethod\LogisticsApp;
+use App\Creational\FactoryMethod\RoadLogistics;
+use App\Creational\FactoryMethod\ShipLogistics;
+use App\Creational\Prototype\Circle;
+use App\Creational\Prototype\Rectangle;
+use App\Creational\Singleton\Database;
 
 $loader = require 'vendor/autoload.php';
+
+echo "CREATIONAL Design Patterns\n\n\n";
 
 echo "Factory Method\n";
 $logisticsApp = new LogisticsApp();
