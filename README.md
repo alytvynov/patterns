@@ -10,3 +10,6 @@ php run.php
 - Builder
 - Prototype
 - Singleton
+
+### Structural Design Patterns / Структурные паттерны
+- Adapter / Wrapper

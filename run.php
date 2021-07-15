@@ -12,10 +12,15 @@ use App\Creational\FactoryMethod\ShipLogistics;
 use App\Creational\Prototype\Circle;
 use App\Creational\Prototype\Rectangle;
 use App\Creational\Singleton\Database;
+use App\Structural\Adapter\RoundHole;
+use App\Structural\Adapter\RoundPeg;
+use App\Structural\Adapter\SquarePeg;
+use App\Structural\Adapter\SquarePegAdapter;
 
 $loader = require 'vendor/autoload.php';
 
-echo "CREATIONAL Design Patterns\n\n\n";
+echo "--------------------------------------------------\n";
+echo "CREATIONAL Design Patterns\n";
 
 echo "Factory Method\n";
 $logisticsApp = new LogisticsApp();
@@ -23,7 +28,7 @@ $logisticsApp->printInfo(new RoadLogistics());
 $logisticsApp->printInfo(new ShipLogistics());
 echo "\n";
 
-echo "Abstract Factory\n";
+echo "Abstract Factory\n\n";
 (new FactoryClient(new ModernFactory()))->printOrder();
 (new FactoryClient(new VictorianFactory()))->printOrder();
 echo "\n";
@@ -50,8 +55,25 @@ $rectangle2->print();
 echo "\n";
 
 echo "Singleton\n";
-$db = Database::getInstance();
+$db  = Database::getInstance();
 $db2 = Database::getInstance();
 dump($db);
 dump($db2);
 echo "\n";
+
+echo "--------------------------------------------------\n";
+echo "STRUCTURAL Design Patterns\n\n";
+echo "Adapter / Wrapper\n";
+$roundHole = new RoundHole(5);
+$roundPeg  = new RoundPeg(4);
+$roundHole->printFits($roundPeg);
+$squarePeg1       = new SquarePeg(3);
+$squarePeg2       = new SquarePeg(9);
+
+$squarePetAdapter = new SquarePegAdapter(5);
+$squarePetAdapter->setSquarePeg($squarePeg1);
+$roundHole->printFits($squarePetAdapter);
+
+$squarePetAdapter->setSquarePeg($squarePeg2);
+$roundHole->printFits($squarePetAdapter);
+
