@@ -9,3 +9,4 @@ php run.php
 - Abstract Factory   
 - Builder
 - Prototype
+- Singleton

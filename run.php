@@ -11,6 +11,7 @@ use App\FactoryMethod\RoadLogistics;
 use App\FactoryMethod\ShipLogistics;
 use App\Prototype\Circle;
 use App\Prototype\Rectangle;
+use App\Singleton\Database;
 
 $loader = require 'vendor/autoload.php';
 
@@ -34,7 +35,7 @@ dump($director->getBuilder()->getResult());
 echo "\n";
 
 echo "Prototype\n";
-$circle    = (new Circle())->setX(1)->setY(3)->setRadius(10);
+$circle = (new Circle())->setX(1)->setY(3)->setRadius(10);
 $circle->print();
 $rectangle = (new Rectangle())->setX(-1)->setY(2)->setHeight(4)->setWidth(6);
 $rectangle->print();
@@ -44,5 +45,11 @@ $circle2->print();
 $rectangle2 = clone $rectangle;
 $rectangle2->setWidth(3)->setHeight(1);
 $rectangle2->print();
+echo "\n";
 
+echo "Singleton\n";
+$db = Database::getInstance();
+$db2 = Database::getInstance();
+dump($db);
+dump($db2);
 echo "\n";
