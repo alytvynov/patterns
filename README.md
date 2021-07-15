@@ -8,3 +8,4 @@ php run.php
 - Factory Method   
 - Abstract Factory   
 - Builder
+- Prototype
