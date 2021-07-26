@@ -16,6 +16,10 @@ use App\Structural\Adapter\RoundHole;
 use App\Structural\Adapter\RoundPeg;
 use App\Structural\Adapter\SquarePeg;
 use App\Structural\Adapter\SquarePegAdapter;
+use App\Structural\Bridge\AdvancedRemote;
+use App\Structural\Bridge\DeviceRadio;
+use App\Structural\Bridge\DeviceTV;
+use App\Structural\Bridge\Remote;
 
 $loader = require 'vendor/autoload.php';
 
@@ -67,8 +71,8 @@ echo "Adapter / Wrapper\n";
 $roundHole = new RoundHole(5);
 $roundPeg  = new RoundPeg(4);
 $roundHole->printFits($roundPeg);
-$squarePeg1       = new SquarePeg(3);
-$squarePeg2       = new SquarePeg(9);
+$squarePeg1 = new SquarePeg(3);
+$squarePeg2 = new SquarePeg(9);
 
 $squarePetAdapter = new SquarePegAdapter(5);
 $squarePetAdapter->setSquarePeg($squarePeg1);
@@ -76,4 +80,15 @@ $roundHole->printFits($squarePetAdapter);
 
 $squarePetAdapter->setSquarePeg($squarePeg2);
 $roundHole->printFits($squarePetAdapter);
+echo "\n";
 
+echo "Builder\n";
+$tv     = new DeviceTV();
+$tv->setVolume(20);
+$remote = new Remote($tv);
+$remote->togglePower();
+$radio   = new DeviceRadio();
+$remote2 = new AdvancedRemote($radio);
+$remote2->togglePower();
+dump($remote);
+dump($remote2);

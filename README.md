@@ -13,3 +13,4 @@ php run.php
 
 ### Structural Design Patterns / Структурные паттерны
 - Adapter / Wrapper
+- Bridge
