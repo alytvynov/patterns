@@ -20,6 +20,11 @@ use App\Structural\Bridge\AdvancedRemote;
 use App\Structural\Bridge\DeviceRadio;
 use App\Structural\Bridge\DeviceTV;
 use App\Structural\Bridge\Remote;
+use App\Structural\Composite\GCircle;
+use App\Structural\Composite\GDot;
+use App\Structural\Composite\GGroup;
+use App\Structural\Composite\GRectangle;
+use App\Structural\Composite\ImageEditor;
 
 $loader = require 'vendor/autoload.php';
 
@@ -83,7 +88,7 @@ $roundHole->printFits($squarePetAdapter);
 echo "\n";
 
 echo "Builder\n";
-$tv     = new DeviceTV();
+$tv = new DeviceTV();
 $tv->setVolume(20);
 $remote = new Remote($tv);
 $remote->togglePower();
@@ -92,3 +97,35 @@ $remote2 = new AdvancedRemote($radio);
 $remote2->togglePower();
 dump($remote);
 dump($remote2);
+echo "\n";
+
+echo "Builder\n";
+$group1      = new GGroup(
+    [
+        new GDot(1, 1),
+        new GDot(-1, 2),
+        new GCircle(3, 10, 7),
+        new GDot(3, 2),
+    ]
+);
+$group2      = new GGroup(
+    [
+        new GDot(-2, 2),
+        new GCircle(2, 2, 1),
+        new GDot(-3, -4)
+    ]
+);
+$group3      = new GGroup(
+    [
+        $group1, $group2, new GRectangle(-5, -5, 3, 8),
+    ]
+);
+$group4      = new GGroup(
+    [
+        new GDot(10, 10),
+        $group3
+    ]
+);
+$imageEditor = new ImageEditor($group4);
+$imageEditor->draw();
+echo "\n";
